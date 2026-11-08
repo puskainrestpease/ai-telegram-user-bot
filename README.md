@@ -1,22 +1,25 @@
 # Telegram AI User Bot
 
-A Telegram user-account automation prototype built with Telethon and Ollama. When enabled for a private conversation, the client sends incoming text messages to a locally available Ollama model and replies with the generated response.
+A Telegram user-account automation prototype built with Telethon and Ollama. When enabled in a private conversation, the client sends incoming text messages to a local Ollama model and replies with the generated response.
 
 ## Requirements
 
 - Python 3.8 or newer
-- Telegram API credentials from [my.telegram.org](https://my.telegram.org)
+- Telegram API credentials from https://my.telegram.org
 - Ollama installed and running
-- A model downloaded in Ollama
+- The model configured through OLLAMA_MODEL
 
 ## Installation
 
 ```bash
 git clone https://github.com/puskainrestpease/ai-telegram-user-bot.git
 cd ai-telegram-user-bot
-
 python -m venv .venv
+```
 
+Activate the virtual environment, then install dependencies:
+
+```bash
 # Windows
 .venv\\Scripts\\activate
 
@@ -28,9 +31,27 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Set the Telegram API ID and API hash in `main.py` before starting the client. Do not publish these credentials or the generated Telethon session file.
+Set the following environment variables before running the client.
 
-Pull the model configured in `main.py`:
+PowerShell:
+
+```powershell
+$env:TG_API_ID = "your_api_id"
+$env:TG_API_HASH = "your_api_hash"
+$env:TG_SESSION_NAME = "telegram_ai_session"
+$env:OLLAMA_MODEL = "cogito8b:latest"
+```
+
+Linux / macOS:
+
+```bash
+export TG_API_ID="your_api_id"
+export TG_API_HASH="your_api_hash"
+export TG_SESSION_NAME="telegram_ai_session"
+export OLLAMA_MODEL="cogito8b:latest"
+```
+
+Pull the selected Ollama model:
 
 ```bash
 ollama pull cogito8b:latest
